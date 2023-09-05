@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .attribution {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Age Calculator</h1>
+    <div class="container">
+        <label for="dob">Select your date of birth:</label>
+        <input type="date" id="dob">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <p id="result"></p>
+    </div>
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/tejaschauhan-py/">Tejas Chauhan</a>.
+    </div>
+
+    <script>
+        function calculateAge() {
+            const dob = document.getElementById('dob').value;
+            const dobDate = new Date(dob);
+            const currentDate = new Date();
+            const ageInMilliseconds = currentDate - dobDate;
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25); // Account for leap years
+            const age = Math.floor(ageInYears);
+            document.getElementById('result').textContent = `Your age is ${age} years.`;
+        }
+    </script>
+</body>
+</html>
